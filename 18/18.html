@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.11.1.js"></script>
+</head>
+
+<body>
+    <input type="checkbox" name="" id="all"> <span>全选</span>
+    <button id="al">反选</button>
+    <ul class="lis">
+        <li>
+            <input type="checkbox" name="" id="lii"><span>张三</span>
+        </li>
+        <li>
+            <input type="checkbox" name="" id="lii"><span>李四</span>
+        </li>
+        <li>
+            <input type="checkbox" name="" id="lii"><span>王麻子</span>
+        </li>
+    </ul>
+    <script>
+        $(function () {
+            //全选
+            $('#all').change(function () {
+                $('.lis #lii').prop('checked', $(this).prop('checked'))
+            })
+            //单选
+            function fn() {
+                if ($('.lis #lii:checked').length == 3) {
+                    $('#all').prop('checked', true)
+                } else {
+                    $('#all').prop('checked', false)
+                }
+            }
+            $('.lis #lii').change(function () {
+                fn()
+            })
+            //反选
+            $('#al').on('click', function () {
+                $('.lis #lii').each(function (index, item) {
+                    $(item).prop('checked', !$(item).prop('checked'))
+                })
+                fn()
+            })
+            
+        })
+    </script>
+</body>
+
+</html>

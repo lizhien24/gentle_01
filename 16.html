@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var str = '85872637471533203552943982';
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            var chats = str.charAt(i)
+            if (o[chats]) {
+                o[chats]++
+            } else {
+                o[chats] = 1;
+            }
+        }
+        console.log(o);
+
+        var max = 0
+        var c = ''
+        //    console.log(arr);
+        for (var k in o) {
+            if (o[k] > max) {
+                max = o[k]
+                c = k
+            }
+        }
+
+        console.log('出现最多的是' + c);
+        console.log('出现了' + max + '次');
+        var newArr = [];
+        var arr = str.split('')
+        console.log(arr);
+        for (var i = 0; i < arr.length; i++) {
+            if (newArr.indexOf(arr[i]) === -1) {
+                newArr.push(arr[i])
+            }
+        }
+        console.log(newArr.join(''));
+        var st = newArr
+        for (var i = 0; i < st.length - 1; i++) {
+            for (var j = 0; j < st.length - i - 1; j++) {
+                if (st[j] > st[j + 1]) {
+                    var temp = st[j];
+                    st[j] = st[j + 1];
+                    st[j + 1] = temp
+                }
+            }
+        }
+        console.log(st.join(''));
+    </script>
+</body>
+
+</html>
